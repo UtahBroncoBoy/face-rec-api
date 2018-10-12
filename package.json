@@ -4,7 +4,7 @@
   "description": "Backend of face recognition application.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Jeff Fredericks",
   "license": "ISC",
