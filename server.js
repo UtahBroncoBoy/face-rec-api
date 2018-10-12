@@ -29,6 +29,6 @@ app.get('/profile/:id', (req, res) => {profile.profileLookup(req, res, db)})
 app.put('/image', (req, res) => {image.imageCountIncrease(req, res, db)})
 app.post('/imageurl',(req, res) => {image.handleApiCall(req, res)})
 
-app.listen(3000, ()=>{
-    console.log('The Face Recognition Server is running on port 3000');
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log(`The Face Recognition Server is running on port ${process.env.PORT}`);
 })
