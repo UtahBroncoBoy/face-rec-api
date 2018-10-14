@@ -18,13 +18,18 @@ const db = knex({
     }
 });
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+}
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {res.send('It is working!');})
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
-app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
+app.post('/register', cors(corsOptions), (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 app.get('/profile/:id', (req, res) => {profile.profileLookup(req, res, db)})
 app.put('/image', (req, res) => {image.imageCountIncrease(req, res, db)})
 app.post('/imageurl',(req, res) => {image.handleApiCall(req, res)})
